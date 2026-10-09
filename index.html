@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Kratos Training Fitness Guide</title>
+	<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+	<!-- Header + Navigation -->
+	<header>
+		<nav class="navbar">
+			<div class="logo">Fitness Guide</div>
+
+			<!-- Mobile menu toggle -->
+			<button class="hamburger" id="hamburger" type="button"
+				aria-label="Open navigation menu" aria-controls="nav-links" aria-expanded="false">
+				<span aria-hidden="true"></span>
+				<span aria-hidden="true"></span>
+				<span aria-hidden="true"></span>
+			</button>
+
+			<!-- Navigation Links -->
+			<ul class="nav-links" id="nav-links">
+				<li><a href="#home">Home</a></li>
+				<li><a href="#workouts">Workouts</a></li>
+				<li><a href="#bodybuilding">Bodybuilding</a></li>
+				<li><a href="#calorie-estimator">Calorie Estimator</a></li>
+				<li><a href="#hydration-estimator">Hydration Estimator</a></li>
+				<li><a href="#hydration">Ways to Hydrate</a></li>
+				<li><a href="#nutrition">Nutrition</a></li>
+				<li><a href="#macro-calculator">Macro Calculator</a></li>
+				<li><a href="#contact">Contact</a></li>
+			</ul>
+		</nav>
+	</header>
+
+	<!-- Hero Section -->
+	<section class="hero" id="home">
+		<h1>Your Ultimate Fitness Guide</h1>
+		<p>Build strength, improve mobility, and take control of your health.</p>
+		<a href="#workouts" class="btn">Start Training</a>
+	</section>
+
+	<!-- Main Content -->
+	<main>
+		<section class="content" id="workouts">
+			<h2>Workout Programs</h2>
+			<p>
+				Explore beginner, intermediate, and advanced routines designed to improve strength,
+				conditioning, and flexibility. Whether you're training for BJJ, bodybuilding, or general fitness,
+				these programs will help you progress safely and effectively.
+			</p>
+			<h3>Beginner 3-Day Hypertrophy Program</h3>
+			<p>
+				<a href="guides/Beginner-3-Day-Hypertrophy-Program.pdf" target="_blank" rel="noopener">
+					View or download the beginner program (PDF)
+				</a>
+			</p>
+			<p>For more coaching, contact Coach Jesse at Kratos Training using the contact information below.</p>
+		</section>
+
+		<section class="content" id="bodybuilding">
+			<h2>Bodybuilding Guides</h2>
+			<p>Explore these Kratos Training resources for classic physique posing and rib flare exercises.</p>
+			<h3>Classic Physique Posing Guide</h3>
+			<p>
+				<a href="guides/Kratos_Classic_Physique_Posing_Guide.pdf" target="_blank" rel="noopener">
+					View or download the posing guide (PDF)
+				</a>
+			</p>
+			<h3>Rib Flare Infographic and Exercises</h3>
+			<p>
+				<a href="guides/Kratos_Rib_Flare_Infographic_Exercises.pdf" target="_blank" rel="noopener">
+					View or download the rib flare guide (PDF)
+				</a>
+			</p>
+			<p>For more advice on properly executing these exercises, contact Coach Jesse using the information below.</p>
+		</section>
+
+		<section class="content" id="calorie-estimator">
+			<h2>Calorie-Burn Estimator</h2>
+			<p>Estimate calories burned based on your activity, body weight, and workout duration.</p>
+			<form id="calorie-form">
+				<label for="activity">Activity</label>
+				<select id="activity" name="activity">
+					<option value="4.3">Brisk walking (3.5 mph)</option>
+					<option value="9.8">Running (6 mph)</option>
+					<option value="7.5">Cycling (moderate effort)</option>
+					<option value="5">Strength training</option>
+					<option value="2.5">Yoga</option>
+					<option value="10.3">BJJ (Brazilian jiu-jitsu)</option>
+					<option value="10.3">Muay Thai</option>
+					<option value="7.3">Kickboxing</option>
+					<option value="10.3">MMA</option>
+				</select>
+
+				<label for="weight">Body weight</label>
+				<div class="input-with-unit">
+					<input id="weight" name="weight" type="number" min="1" max="700" step="0.1"
+						placeholder="e.g. 150" required>
+					<select id="weight-unit" name="weight-unit" aria-label="Weight unit">
+						<option value="lb">lb</option>
+						<option value="kg">kg</option>
+					</select>
+				</div>
+
+				<label for="duration">Workout duration (minutes)</label>
+				<input id="duration" name="duration" type="number" min="1" max="600" step="1"
+					placeholder="e.g. 30" required>
+
+				<button class="btn calculator-button" type="submit">Estimate Calories</button>
+			</form>
+			<p class="calculator-result" id="calorie-result" role="status" aria-live="polite">
+				Enter your workout details to see an estimate.
+			</p>
+			<p class="calculator-note">
+				This is a rough estimate based on standard activity MET values. Actual calorie burn varies
+				by person and workout intensity.
+			</p>
+		</section>
+
+		<section class="content" id="hydration-estimator">
+			<h2>Workout Hydration Estimator</h2>
+			<p>
+				Estimate your sweat loss from a workout using your body weight before and after,
+				workout duration, and fluids consumed.
+			</p>
+			<form id="hydration-form">
+				<label for="hydration-pre-weight">Body weight before workout</label>
+				<div class="input-with-unit">
+					<input id="hydration-pre-weight" name="pre-weight" type="number" min="20" max="700"
+						step="0.1" placeholder="e.g. 150" required>
+					<select id="hydration-weight-unit" name="weight-unit" aria-label="Body weight unit">
+						<option value="lb">lb</option>
+						<option value="kg">kg</option>
+					</select>
+				</div>
+
+				<label for="hydration-post-weight">Body weight after workout (same unit)</label>
+				<input id="hydration-post-weight" name="post-weight" type="number" min="20" max="700"
+					step="0.1" placeholder="e.g. 149" required>
+
+				<label for="hydration-duration">Workout duration (minutes)</label>
+				<input id="hydration-duration" name="duration" type="number" min="1" max="600"
+					step="1" placeholder="e.g. 60" required>
+
+				<label for="hydration-fluid">Fluids consumed during workout</label>
+				<div class="input-with-unit">
+					<input id="hydration-fluid" name="fluid" type="number" min="0" max="676"
+						step="0.05" placeholder="e.g. 0.5" required>
+					<select id="hydration-fluid-unit" name="fluid-unit" aria-label="Fluid volume unit">
+						<option value="l">liters</option>
+						<option value="oz">US fl oz</option>
+						<option value="gal">US gallons</option>
+					</select>
+				</div>
+
+				<label for="hydration-urine">Urine produced during workout, in the same unit (optional)</label>
+				<input id="hydration-urine" name="urine" type="number" min="0" max="676"
+					step="0.05" placeholder="Leave blank if none measured">
+
+				<button class="btn calculator-button" type="submit">Estimate Sweat Loss</button>
+			</form>
+			<div class="calculator-result" id="hydration-result" role="status" aria-live="polite">
+				Enter your workout measurements to estimate sweat loss.
+			</div>
+			<p class="calculator-note">
+				For a useful comparison, weigh yourself in similar dry clothing before and after the workout.
+				Sweat rate is an estimate and changes with temperature, effort, and other conditions.
+				Use thirst as a guide, avoid drinking enough to gain weight during exercise, and consult a
+				health professional for individual medical guidance.
+			</p>
+		</section>
+
+		<section class="content" id="hydration">
+			<h2>Ways to Hydrate Yourself</h2>
+			<p>Proper hydration supports training and recovery. Here are practical ways to stay hydrated:</p>
+			<ul class="hydration-list">
+				<li>Drink fluids consistently through the day rather than trying to catch up all at once.</li>
+				<li>For long, intense, hot, or very sweaty sessions, consider an electrolyte drink and follow its label.</li>
+				<li>Eat water-rich foods such as watermelon, oranges, and cucumbers.</li>
+				<li>Carry a reusable water bottle to make drinking when thirsty convenient.</li>
+				<li>Sip during workouts and drink to thirst instead of forcing large amounts quickly.</li>
+				<li>Avoid excessive caffeine and alcohol, especially around training.</li>
+				<li>Use hydration products when they suit the workout; most short, easy sessions do not require them.</li>
+				<li>Add lemon or fruit to water if that makes it more enjoyable.</li>
+			</ul>
+			<p class="calculator-note">
+				Sweat tests estimate fluid loss, not your individual sodium, potassium, or magnesium loss.
+				Do not use this result to calculate mineral supplement doses. For medical conditions or
+				medications affecting fluid or electrolytes, ask a healthcare professional for guidance.
+			</p>
+		</section>
+
+		<section class="content" id="nutrition">
+			<h2>Nutrition Basics</h2>
+			<p>
+				Learn how to fuel your body with balanced meals, proper hydration, and smart supplementation.
+				Nutrition is the foundation of performance and recovery.
+			</p>
+		</section>
+
+		<section class="content" id="macro-calculator">
+			<h2>Macro Calculator</h2>
+			<p>Estimate a daily calorie target and see a suggested protein, carbohydrate, and fat split.</p>
+			<form id="macro-form">
+				<label for="macro-age">Age (18–100)</label>
+				<input id="macro-age" name="age" type="number" min="18" max="100" step="1"
+					placeholder="e.g. 30" required>
+
+				<label for="macro-sex">Formula adjustment</label>
+				<select id="macro-sex" name="sex">
+					<option value="-161">Female</option>
+					<option value="5">Male</option>
+				</select>
+
+				<label for="macro-weight">Body weight</label>
+				<div class="input-with-unit">
+					<input id="macro-weight" name="weight" type="number" min="1" max="700" step="0.1"
+						placeholder="e.g. 150" required>
+					<select id="macro-weight-unit" name="weight-unit" aria-label="Macro calculator weight unit">
+						<option value="lb">lb</option>
+						<option value="kg">kg</option>
+					</select>
+				</div>
+
+				<label for="macro-height">Height (cm)</label>
+				<input id="macro-height" name="height" type="number" min="120" max="230" step="0.1"
+					placeholder="e.g. 170" required>
+
+				<label for="macro-activity">Typical activity level</label>
+				<select id="macro-activity" name="activity">
+					<option value="1.2">Mostly sitting, little exercise</option>
+					<option value="1.375">Light exercise 1–3 days per week</option>
+					<option value="1.55">Moderate exercise 3–5 days per week</option>
+					<option value="1.725">Hard exercise 6–7 days per week</option>
+					<option value="1.9">Very hard training or physical job</option>
+				</select>
+
+				<label for="macro-goal">Goal</label>
+				<select id="macro-goal" name="goal">
+					<option value="-300">Gradual weight loss (-300 kcal/day)</option>
+					<option value="0">Maintain weight</option>
+					<option value="300">Gradual weight gain (+300 kcal/day)</option>
+				</select>
+
+				<button class="btn calculator-button" type="submit">Calculate Macros</button>
+			</form>
+			<div class="calculator-result" id="macro-result" role="status" aria-live="polite">
+				Enter your details to see daily calorie and macro estimates.
+			</div>
+			<p class="calculator-note">
+				Uses the Mifflin–St Jeor equation and an approximate 30% protein, 40% carbohydrate,
+				30% fat calorie split. These are general estimates, not medical or individualized nutrition advice.
+			</p>
+		</section>
+
+		<section class="content" id="contact">
+			<h2>Contact</h2>
+			<img class="business-logo" src="images/kratos-training-logo.png" alt="Kratos Training logo">
+			<h3>Kratos Training</h3>
+			<p>For coaching and personalized guidance, contact Coach Jesse.</p>
+			<p>Phone: <a href="tel:+15307640754">530-764-0754</a></p>
+			<p>Email: <a href="mailto:kratostraining23@gmail.com">kratostraining23@gmail.com</a></p>
+		</section>
+	</main>
+
+	<!-- Footer -->
+	<footer>
+		<p>&copy; 2026 Fitness Guide. All rights reserved.</p>
+	</footer>
+
+	<!-- Mobile Menu Script -->
+	<script>
+		const hamburger = document.getElementById('hamburger');
+		const navLinks = document.getElementById('nav-links');
+
+		hamburger.addEventListener('click', () => {
+			const isExpanded = hamburger.getAttribute('aria-expanded') === 'true';
+			hamburger.setAttribute('aria-expanded', String(!isExpanded));
+			hamburger.setAttribute('aria-label', isExpanded ? 'Open navigation menu' : 'Close navigation menu');
+			navLinks.classList.toggle('active', !isExpanded);
+		});
+
+		navLinks.addEventListener('click', (event) => {
+			if (event.target.closest('a')) {
+				hamburger.setAttribute('aria-expanded', 'false');
+				hamburger.setAttribute('aria-label', 'Open navigation menu');
+				navLinks.classList.remove('active');
+			}
+		});
+
+		const calorieForm = document.getElementById('calorie-form');
+		const calorieResult = document.getElementById('calorie-result');
+
+		calorieForm.addEventListener('submit', (event) => {
+			event.preventDefault();
+			if (!calorieForm.reportValidity()) {
+				return;
+			}
+
+			const met = Number(document.getElementById('activity').value);
+			const weight = Number(document.getElementById('weight').value);
+			const weightUnit = document.getElementById('weight-unit').value;
+			const duration = Number(document.getElementById('duration').value);
+			const weightKg = weightUnit === 'lb' ? weight / 2.20462 : weight;
+
+			if (weightKg < 20 || weightKg > 300) {
+				calorieResult.textContent = 'Please enter a body weight between 20 and 300 kg (about 44 to 661 lb).';
+				return;
+			}
+
+			const calories = Math.round(met * 3.5 * weightKg / 200 * duration);
+			calorieResult.textContent = `Estimated calories burned: about ${calories} kcal.`;
+		});
+
+		const hydrationForm = document.getElementById('hydration-form');
+		const hydrationResult = document.getElementById('hydration-result');
+
+		hydrationForm.addEventListener('submit', (event) => {
+			event.preventDefault();
+			if (!hydrationForm.reportValidity()) {
+				return;
+			}
+
+			const preWeight = Number(document.getElementById('hydration-pre-weight').value);
+			const postWeight = Number(document.getElementById('hydration-post-weight').value);
+			const weightUnit = document.getElementById('hydration-weight-unit').value;
+			const durationMinutes = Number(document.getElementById('hydration-duration').value);
+			const fluidAmount = Number(document.getElementById('hydration-fluid').value);
+			const fluidUnit = document.getElementById('hydration-fluid-unit').value;
+			const urineInput = document.getElementById('hydration-urine').value;
+			const urineAmount = urineInput === '' ? 0 : Number(urineInput);
+			const weightToKg = weightUnit === 'lb' ? 1 / 2.20462 : 1;
+			const fluidToLiters = fluidUnit === 'oz' ? 1 / 33.814
+				: fluidUnit === 'gal' ? 3.78541
+					: 1;
+			const preWeightKg = preWeight * weightToKg;
+			const postWeightKg = postWeight * weightToKg;
+			const fluidLiters = fluidAmount * fluidToLiters;
+			const urineLiters = urineAmount * fluidToLiters;
+			const sweatLossLiters = preWeightKg - postWeightKg + fluidLiters - urineLiters;
+			const durationHours = durationMinutes / 60;
+
+			if (preWeightKg < 20 || preWeightKg > 300 || postWeightKg < 20 || postWeightKg > 300) {
+				hydrationResult.textContent = 'Please enter weights between 20 and 300 kg (about 44 to 661 lb).';
+				return;
+			}
+			if (fluidLiters > 20 || urineLiters > 20) {
+				hydrationResult.textContent = 'Please enter fluid and urine volumes of 20 L (about 676 US fl oz or 5.28 US gal) or less.';
+				return;
+			}
+			if (sweatLossLiters <= 0) {
+				hydrationResult.textContent = 'These measurements do not show measurable sweat loss. Check your weights and fluid entries.';
+				return;
+			}
+			const sweatRate = sweatLossLiters / durationHours;
+			const sweatEstimate = document.createElement('p');
+			sweatEstimate.textContent =
+				`Estimated sweat loss: about ${sweatLossLiters.toFixed(2)} L total ` +
+				`(${(sweatLossLiters * 33.814).toFixed(1)} US fl oz; ` +
+				`${(sweatLossLiters / 3.78541).toFixed(2)} US gal), or ${sweatRate.toFixed(2)} L per hour.`;
+
+			const bodyMassChange = preWeightKg - postWeightKg;
+			const recoveryGuidance = document.createElement('p');
+			if (bodyMassChange > 0) {
+				const replacementLow = bodyMassChange * 1.25;
+				const replacementHigh = bodyMassChange * 1.5;
+				recoveryGuidance.textContent =
+					`If you need to recover quickly, a general post-workout fluid range is about ` +
+					`${replacementLow.toFixed(1)}–${replacementHigh.toFixed(1)} L ` +
+					`(${(replacementLow * 33.814).toFixed(0)}–${(replacementHigh * 33.814).toFixed(0)} US fl oz) ` +
+					`over the next few hours, taken gradually. This is based on your ${bodyMassChange.toFixed(2)} kg ` +
+					`(about ${(bodyMassChange * 2.20462).toFixed(1)} lb) body-weight decrease; use thirst as a guide.`;
+			} else if (bodyMassChange < 0) {
+				recoveryGuidance.textContent =
+					`Your body weight increased by about ${Math.abs(bodyMassChange).toFixed(2)} kg ` +
+					`(${Math.abs(bodyMassChange / preWeightKg * 100).toFixed(1)}%) during the workout. ` +
+					`Do not try to replace more fluid right away; avoid drinking enough to gain weight during exercise.`;
+			} else {
+				recoveryGuidance.textContent =
+					`Your pre- and post-workout weights are the same, so this estimate does not show a body-weight fluid deficit. ` +
+					`Drink to thirst during recovery.`;
+			}
+
+			const electrolyteGuidance = document.createElement('p');
+			electrolyteGuidance.textContent =
+				`Electrolytes: this test cannot estimate your personal salt (sodium), potassium, or magnesium losses. ` +
+				`For a long, hot, or very sweaty workout, a normal meal or a labeled electrolyte drink can provide sodium. ` +
+				`Get potassium and magnesium from a balanced diet; do not take extra salt or mineral supplements based on this estimate.`;
+
+			hydrationResult.replaceChildren(sweatEstimate, recoveryGuidance, electrolyteGuidance);
+		});
+
+		const macroForm = document.getElementById('macro-form');
+		const macroResult = document.getElementById('macro-result');
+
+		macroForm.addEventListener('submit', (event) => {
+			event.preventDefault();
+			if (!macroForm.reportValidity()) {
+				return;
+			}
+
+			const age = Number(document.getElementById('macro-age').value);
+			const sexAdjustment = Number(document.getElementById('macro-sex').value);
+			const weight = Number(document.getElementById('macro-weight').value);
+			const weightUnit = document.getElementById('macro-weight-unit').value;
+			const heightCm = Number(document.getElementById('macro-height').value);
+			const activityFactor = Number(document.getElementById('macro-activity').value);
+			const goalAdjustment = Number(document.getElementById('macro-goal').value);
+			const weightKg = weightUnit === 'lb' ? weight / 2.20462 : weight;
+
+			if (weightKg < 30 || weightKg > 300) {
+				macroResult.textContent = 'Please enter a body weight between 30 and 300 kg (about 66 to 661 lb).';
+				return;
+			}
+
+			const restingCalories = 10 * weightKg + 6.25 * heightCm - 5 * age + sexAdjustment;
+			const calorieTarget = Math.round(restingCalories * activityFactor + goalAdjustment);
+			const proteinGrams = Math.round(calorieTarget * 0.3 / 4);
+			const carbGrams = Math.round(calorieTarget * 0.4 / 4);
+			const fatGrams = Math.round(calorieTarget * 0.3 / 9);
+
+			macroResult.replaceChildren();
+			const target = document.createElement('p');
+			target.textContent = `Estimated daily target: ${calorieTarget} kcal`;
+			const macros = document.createElement('ul');
+
+			[
+				['Protein', proteinGrams],
+				['Carbohydrates', carbGrams],
+				['Fat', fatGrams]
+			].forEach(([name, grams]) => {
+				const item = document.createElement('li');
+				item.textContent = `${name}: ${grams} g`;
+				macros.append(item);
+			});
+
+			macroResult.append(target, macros);
+		});
+	</script>
+
+</body>
+</html>
