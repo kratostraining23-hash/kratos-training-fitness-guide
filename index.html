@@ -24,6 +24,7 @@
 			<!-- Navigation Links -->
 			<ul class="nav-links" id="nav-links">
 				<li><a href="#home">Home</a></li>
+				<li><a href="#lead-generator">Free Training Plan</a></li>
 				<li><a href="#workouts">Workouts</a></li>
 				<li><a href="#bodybuilding">Bodybuilding</a></li>
 				<li><a href="#calorie-estimator">Calorie Estimator</a></li>
@@ -40,11 +41,48 @@
 	<section class="hero" id="home">
 		<h1>Your Ultimate Fitness Guide</h1>
 		<p>Build strength, improve mobility, and take control of your health.</p>
-		<a href="#workouts" class="btn">Start Training</a>
+		<a href="#lead-generator" class="btn">Get a Free Training Plan</a>
+		<a href="#workouts" class="btn">Explore Workouts</a>
 	</section>
 
 	<!-- Main Content -->
 	<main>
+		<section class="content" id="lead-generator">
+			<h2>Get a Free Training Plan</h2>
+			<p>Tell Coach Jesse what you're working toward, and start a conversation about your training.</p>
+			<form id="lead-form">
+				<label for="lead-name">Name</label>
+				<input id="lead-name" name="name" type="text" autocomplete="name" maxlength="100" required>
+
+				<label for="lead-email">Email</label>
+				<input id="lead-email" name="email" type="email" autocomplete="email" maxlength="254" required>
+
+				<label for="lead-goal">What would you like help with?</label>
+				<select id="lead-goal" name="goal" required>
+					<option value="" disabled selected>Select a training goal</option>
+					<option value="Strength and muscle building">Strength and muscle building</option>
+					<option value="Brazilian jiu-jitsu or combat sports">Brazilian jiu-jitsu or combat sports</option>
+					<option value="Weight management and nutrition">Weight management and nutrition</option>
+					<option value="Mobility and general fitness">Mobility and general fitness</option>
+					<option value="Other">Other</option>
+				</select>
+
+				<label for="lead-message">Anything else Coach Jesse should know? (optional)</label>
+				<textarea id="lead-message" name="message" rows="4" maxlength="1000"></textarea>
+
+				<button class="btn calculator-button" type="submit">Email Coach Jesse</button>
+			</form>
+			<p class="calculator-note">Submitting opens a prefilled email to kratostraining23@gmail.com in your email app. This website does not store your information.</p>
+			<p class="calculator-result" id="lead-result" role="status" aria-live="polite"></p>
+			<div class="lead-next-step" id="lead-next-step" hidden>
+				<h3>Keep the momentum going</h3>
+				<p>After sending your email to Coach Jesse, join Kratos Athletes Only on Skool to connect with the community.</p>
+				<a class="btn" href="https://www.skool.com/kratos-athletes-only-2777" target="_blank" rel="noopener noreferrer">
+					Join Kratos Athletes Only
+				</a>
+			</div>
+		</section>
+
 		<section class="content" id="workouts">
 			<h2>Workout Programs</h2>
 			<p>
@@ -77,6 +115,16 @@
 				</a>
 			</p>
 			<p>For more advice on properly executing these exercises, contact Coach Jesse using the information below.</p>
+		</section>
+
+		<section class="content community-promo" id="community">
+			<h2>Want more training? More PDFs? More guidance?</h2>
+			<p>Unlock exclusive workouts, conditioning programs, mobility routines, and every premium Kratos Training PDF inside my private Skool community.</p>
+			<p>If you’re serious about leveling up your strength, conditioning, and BJJ performance, join the Kratos Training Skool Community and get full access to everything I create.</p>
+			<p class="community-promo-highlight"><strong>More content. More support. More results.</strong></p>
+			<a class="btn" href="https://www.skool.com/kratos-athletes-only-2777" target="_blank" rel="noopener noreferrer">
+				Join the community today
+			</a>
 		</section>
 
 		<section class="content" id="calorie-estimator">
@@ -267,6 +315,23 @@
 		</section>
 	</main>
 
+	<details class="faq-chat" id="faq-chat">
+		<summary aria-label="Open the fitness FAQ assistant">Ask the fitness guide</summary>
+		<section class="faq-chat-panel" aria-labelledby="faq-chat-title">
+			<h2 id="faq-chat-title">Fitness FAQ Assistant</h2>
+			<p class="calculator-note">This assistant uses preset answers, not AI. Ask about workouts, nutrition, hydration, or the website.</p>
+			<div class="faq-chat-messages" id="faq-chat-messages" role="log" aria-live="polite" aria-relevant="additions">
+				<p class="faq-chat-message faq-chat-answer">Hi! Ask me a general question about training, nutrition, hydration, or Kratos Training.</p>
+			</div>
+			<form id="faq-chat-form">
+				<label class="visually-hidden" for="faq-chat-question">Your question</label>
+				<input id="faq-chat-question" name="question" type="text" maxlength="250"
+					placeholder="Type a question..." autocomplete="off" required>
+				<button class="btn calculator-button" type="submit">Ask</button>
+			</form>
+		</section>
+	</details>
+
 	<!-- Footer -->
 	<footer>
 		<p>&copy; 2026 Fitness Guide. All rights reserved.</p>
@@ -290,6 +355,110 @@
 				hamburger.setAttribute('aria-label', 'Open navigation menu');
 				navLinks.classList.remove('active');
 			}
+		});
+
+		const leadForm = document.getElementById('lead-form');
+		const leadResult = document.getElementById('lead-result');
+		const leadNextStep = document.getElementById('lead-next-step');
+
+		leadForm.addEventListener('submit', (event) => {
+			event.preventDefault();
+			if (!leadForm.reportValidity()) {
+				return;
+			}
+
+			const formData = new FormData(leadForm);
+			const body = [
+				`Name: ${formData.get('name')}`,
+				`Email: ${formData.get('email')}`,
+				`Training goal: ${formData.get('goal')}`,
+				'',
+				'Additional information:',
+				formData.get('message') || 'None'
+			].join('\n');
+			const subject = encodeURIComponent('Free training plan inquiry');
+			const encodedBody = encodeURIComponent(body);
+
+			leadResult.textContent = 'Your email app should open with your message ready. Send it to contact Coach Jesse. If it does not open, email kratostraining23@gmail.com directly.';
+			leadNextStep.hidden = false;
+			window.location.href = `mailto:kratostraining23@gmail.com?subject=${subject}&body=${encodedBody}`;
+		});
+
+		const faqChatForm = document.getElementById('faq-chat-form');
+		const faqChatQuestion = document.getElementById('faq-chat-question');
+		const faqChatMessages = document.getElementById('faq-chat-messages');
+		const faqAnswers = [
+			{
+				keywords: ['pain', 'injury', 'injured', 'medical', 'doctor', 'condition'],
+				answer: 'I can only share general fitness information, not diagnose or treat injuries or medical conditions. Stop any activity that causes pain and check with a qualified healthcare professional for personal advice.'
+			},
+			{
+				keywords: ['hydration', 'hydrate', 'hydrated', 'water', 'drink', 'sweat'],
+				answer: 'Drink to thirst and avoid forcing large amounts of water. For longer, hot, or very sweaty sessions, consider an electrolyte drink and follow its label. The site has a hydration estimator and more tips in Ways to Hydrate.'
+			},
+			{
+				keywords: ['nutrition', 'food', 'eat', 'diet', 'protein', 'macro'],
+				answer: 'A balanced eating pattern can support training and recovery. The Macro Calculator gives rough calorie and macro estimates; individual needs vary, and it is not medical or individualized nutrition advice.'
+			},
+			{
+				keywords: ['calorie', 'burn'],
+				answer: 'Use the Calorie-Burn Estimator for a rough workout estimate. Actual calorie burn varies with the person and workout intensity.'
+			},
+			{
+				keywords: ['beginner', 'workout', 'program', 'routine', 'training', 'muscle', 'strength'],
+				answer: 'Start with the Beginner 3-Day Hypertrophy Program in the Workout Programs section. Choose a level you can perform with good technique, progress gradually, and allow time for recovery.'
+			},
+			{
+				keywords: ['skool', 'community', 'join'],
+				answer: 'Join the Kratos Athletes Only community on Skool to connect with the group.',
+				link: 'https://www.skool.com/kratos-athletes-only-2777',
+				linkText: 'Join Kratos Athletes Only'
+			},
+			{
+				keywords: ['coach', 'coaching', 'contact', 'email'],
+				answer: 'For coaching and personalized guidance, contact Coach Jesse at kratostraining23@gmail.com or use the lead form on this page.'
+			}
+		];
+
+		faqChatForm.addEventListener('submit', (event) => {
+			event.preventDefault();
+			if (!faqChatForm.reportValidity()) {
+				return;
+			}
+
+			const question = faqChatQuestion.value.trim();
+			if (!question) {
+				return;
+			}
+
+			const normalizedQuestion = question.toLowerCase();
+			const match = faqAnswers.find(({ keywords }) =>
+				keywords.some((keyword) => normalizedQuestion.includes(keyword))
+			);
+			const answer = match || {
+				answer: 'I can help with general questions about workouts, nutrition, hydration, calories, and Kratos Training. Try one of those topics, or contact Coach Jesse for a question that needs personal guidance.'
+			};
+
+			const questionMessage = document.createElement('p');
+			questionMessage.className = 'faq-chat-message faq-chat-question';
+			questionMessage.textContent = question;
+
+			const answerMessage = document.createElement('p');
+			answerMessage.className = 'faq-chat-message faq-chat-answer';
+			answerMessage.textContent = answer.answer;
+			if (answer.link) {
+				const link = document.createElement('a');
+				link.href = answer.link;
+				link.target = '_blank';
+				link.rel = 'noopener noreferrer';
+				link.textContent = answer.linkText;
+				answerMessage.append(' ', link);
+			}
+
+			faqChatMessages.append(questionMessage, answerMessage);
+			faqChatMessages.scrollTop = faqChatMessages.scrollHeight;
+			faqChatForm.reset();
+			faqChatQuestion.focus();
 		});
 
 		const calorieForm = document.getElementById('calorie-form');
