@@ -99,6 +99,11 @@ h1, h2 {
 	margin: 10px 0 20px;
 }
 
+.hero .btn {
+	display: inline-block;
+	margin: 6px;
+}
+
 .btn {
 	background: #ff6600;
 	padding: 10px 20px;
@@ -358,6 +363,14 @@ footer {
 
 /* Responsive Design */
 @media (max-width: 768px) {
+	.hero .btn {
+		display: block;
+		width: fit-content;
+		max-width: 100%;
+		box-sizing: border-box;
+		margin: 10px auto;
+	}
+
 	/* Show hamburger */
 	.hamburger {
 		display: flex;
